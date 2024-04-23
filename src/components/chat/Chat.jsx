@@ -11,7 +11,6 @@ const Chat = () => {
     setEmojiHandler(false)
   }
 
-  console.log(text)
   return (
     <div className="chat">
       <div className="top">
@@ -37,14 +36,16 @@ const Chat = () => {
           <img src="./camera.png" alt="" />
           <img src="./mic.png" alt="" />
         </div>
-        <input type="text" placeholder="Type a message..." onChange={(e) => setText(e.target.value)} />
+        <input type="text" placeholder="Type a message..." value={text} onChange={(e) => setText(e.target.value)} />
         <div className="emoji">
           <img
             src="./emoji.png"
             alt=""
             onClick={() => setEmojiHandler(!emojiHandler)}
           />
+          <div className="picker">
           {emojiHandler? <EmojiPicker onEmojiClick={handleEmoji}></EmojiPicker> : ""}
+          </div>
         </div>
         <button className="sendButton">Send</button>
       </div>
