@@ -32,21 +32,7 @@ const Details = () => {
               <img src="./avatar.png" alt="" />
               <span>photo-2024-2.png</span>
               </div>
-              <img src="./download.png" alt="" />
-            </div>
-            <div className="photoItem">
-              <div className="photoDetails">
-              <img src="./avatar.png" alt="" />
-              <span>photo-2024-2.png</span>
-              </div>
-              <img src="./download.png" alt="" />
-            </div>
-            <div className="photoItem">
-              <div className="photoDetails">
-              <img src="./avatar.png" alt="" />
-              <span>photo-2024-2.png</span>
-              </div>
-              <img src="./download.png" alt="" />
+              <img src="./download.png" alt="" className="icon"/>
             </div>
           </div>
         </div>
@@ -57,6 +43,7 @@ const Details = () => {
           </div>
         </div>
         <button>Block user</button>
+        <button className="logOut">Logout</button>
       </div>
     </div>
   );
