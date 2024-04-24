@@ -7,7 +7,9 @@
   gap: 100px;
 
   .separator {
-    
+    height: 80%;
+    width: 2px;
+    background-color: #dddddd35;
   }
   .item {
     flex: 1;
@@ -25,6 +27,7 @@
         cursor: pointer;
         background-color: rgba(17, 25, 40, 0.3);
         padding: 10px;
+        text-decoration: underline;
       }
       input {
         padding: 20px;
@@ -37,19 +40,21 @@
         -moz-border-radius: 5px;
         -ms-border-radius: 5px;
         -o-border-radius: 5px;
-}
+      }
       button {
-            padding: 10px;
-            background-color: #1a73e8;
-            text-transform: capitalize;
-            border: none;
-            color: white;
-            border-radius: 5px;
-            -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            -ms-border-radius: 5px;
-            -o-border-radius: 5px;
-}
+        width: 100%;
+        padding: 10px;
+        background-color: #1a73e8;
+        text-transform: capitalize;
+        border: none;
+        cursor: pointer;
+        color: white;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+      }
     }
   }
 }
