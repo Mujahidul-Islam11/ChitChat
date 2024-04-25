@@ -5,7 +5,7 @@ import List from "./components/list/List";
 import Notification from "./components/notification/Notification";
 
 const App = () => {
-  const user = false;
+  const user = true;
   return (
     <div className="chat-container">
       {user ? (
