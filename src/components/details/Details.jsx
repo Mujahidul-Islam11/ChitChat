@@ -1,4 +1,9 @@
+import { toast } from "react-toastify";
 import "./details.css";
+import { signOut } from "firebase/auth";
+import { auth } from "../../lib/firebase.config";
+
+
 
 const Details = () => {
   return (
@@ -43,7 +48,7 @@ const Details = () => {
           </div>
         </div>
         <button>Block user</button>
-        <button className="logOut">Log out</button>
+        <button className="logOut" onClick={()=> auth.signOut()}>Log out</button>
       </div>
     </div>
   );

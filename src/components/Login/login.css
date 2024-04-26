@@ -54,6 +54,11 @@
         -moz-border-radius: 5px;
         -ms-border-radius: 5px;
         -o-border-radius: 5px;
+
+        &:disabled {
+          cursor: not-allowed;
+          background-color: #1a73e898;
+        }
       }
     }
   }
