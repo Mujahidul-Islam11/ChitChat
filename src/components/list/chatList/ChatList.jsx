@@ -7,7 +7,7 @@ import { useUserStore } from '../../../lib/userStore';
 
 
 const ChatList = () => {
-    const [chats, setChats] = useState(false);
+    const [chats, setChats] = useState([]);
     const [addMode, setAddMode] = useState(false);
 
     const {currentUser} =  useUserStore();
@@ -42,13 +42,14 @@ const ChatList = () => {
                 onClick={() => setAddMode(!addMode)}/>
             </div>
 
-            {chats?.map(chat => <div key={chat.chatId} className="item">
-                <img src="./avatar.png" alt="" />
+            {chats?.map(chat => <div key={chat?.chatId} className="item">
+                <img src={chat.avatar || "./avatar.png"} alt="" />
                 <div className="texts">
-                    <span>Jhon Doe</span>
-                    <p>{chat.lastMessage}</p>
+                    <span>{chat?.username}</span>
+                    <p>{chat?.lastMessage}</p>
                 </div>
             </div>)}
+
             {addMode && <AddUsers></AddUsers>}
         </div>
     );
