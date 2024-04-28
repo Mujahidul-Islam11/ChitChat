@@ -13,11 +13,11 @@ const ChatList = () => {
     const {currentUser} =  useUserStore();
 
     useEffect(()=> {
-        const unSub = onSnapshot(doc(db, "userChats", currentUser.id), async(res) => {
-            const items = res.data().chats;
+        const unSub = onSnapshot(doc(db, "userchats", currentUser.id), async(res) => {
+            const items = res?.data().chats;
 
             const promises = items.map(async(item) => {
-                const userDocRef = doc(db, "user", item.receiverId);
+                const userDocRef = doc(db, "users", item.receiverId);
                 const userDocSnap = await getDoc(userDocRef);
 
                 const user = userDocSnap.data();
@@ -30,7 +30,9 @@ const ChatList = () => {
         return () => {
             unSub()
         }
-    }, [currentUser])
+    }, [currentUser.id])
+
+    console.log(chats)
     return (
         <div className='chatList'>
             <div className="search">
@@ -43,9 +45,9 @@ const ChatList = () => {
             </div>
 
             {chats?.map(chat => <div key={chat?.chatId} className="item">
-                <img src={chat.avatar || "./avatar.png"} alt="" />
+                <img src={chat?.user.avatar || "./avatar.png" } alt="" />
                 <div className="texts">
-                    <span>{chat?.username}</span>
+                    <span>{chat?.user?.username}</span>
                     <p>{chat?.lastMessage}</p>
                 </div>
             </div>)}

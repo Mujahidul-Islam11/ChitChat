@@ -1,4 +1,5 @@
 import {
+    arrayUnion,
   collection,
   doc,
   getDoc,
@@ -6,14 +7,17 @@ import {
   query,
   serverTimestamp,
   setDoc,
+  updateDoc,
   where,
 } from "firebase/firestore";
 import "./addusers.css";
 import { db } from "../../../../lib/firebase.config";
 import { useState } from "react";
+import { useUserStore } from "../../../../lib/userStore";
 
 const AddUsers = () => {
   const [user, setUser] = useState();
+  const {currentUser} = useUserStore();
 
   const handleAdd = async () => {
     const chatRef = collection(db, "chats");
@@ -26,7 +30,23 @@ const AddUsers = () => {
         message: [],
       });
 
-      console.log(newChatRef.id);
+      await updateDoc(doc(userChatsRef, user.id), {
+        chats: arrayUnion ({
+            chatId: newChatRef.id,
+            lastMessage: "",
+            receiverId: currentUser.id,
+            updatedAt: Date.now(),
+        })
+      });
+
+      await updateDoc(doc(userChatsRef, currentUser.id), {
+        chats: arrayUnion ({
+            chatId: newChatRef.id,
+            lastMessage: "",
+            receiverId: user.id,
+            updatedAt: Date.now(),
+        })
+      });
     } catch (err) {
       console.log(err);
     }
