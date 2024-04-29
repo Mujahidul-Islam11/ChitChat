@@ -32,7 +32,7 @@ const ChatList = () => {
         }
     }, [currentUser.id])
 
-    console.log(chats)
+
     return (
         <div className='chatList'>
             <div className="search">
